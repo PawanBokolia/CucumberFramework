@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Login test
 
 Scenario: successful login with valid credentials
 Given User Launch Chrome Browser
