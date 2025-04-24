@@ -12,7 +12,6 @@ public class LoginPage {
 	public LoginPage(WebDriver rDriver)
 	{
 		ldriver=rDriver;
-
 		PageFactory.initElements(rDriver, this);
 	}
 	
@@ -26,9 +25,11 @@ public class LoginPage {
 	@FindBy(xpath = "//button[@class='button-1 login-button']")
 	WebElement LoginBtn;
 	
-	
 	@FindBy(linkText = "Logout")
 	WebElement logout;
+	
+	
+	
 	
 	public void enterEmail(String emailAdd)
 	{

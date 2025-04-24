@@ -26,6 +26,7 @@ public class StepDef {
 	public void user_open_url(String URL) 
 	{
 		driver.get(URL);
+		driver.manage().window().maximize();
 	}
 
 	@When("User enters Email as {string} and Password as {string}")
@@ -54,7 +55,6 @@ public class StepDef {
 		{
 			Assert.assertTrue(false);
 		}
-	
 	
 	}
 
