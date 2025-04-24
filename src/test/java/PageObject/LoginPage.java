@@ -6,42 +6,51 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-
 	
 	WebDriver ldriver;
-	
+
 	public LoginPage(WebDriver rDriver)
 	{
 		ldriver=rDriver;
+
 		PageFactory.initElements(rDriver, this);
 	}
 	
 	
-	@FindBy(id ="Email")
+	@FindBy(id = "Email")
 	WebElement email;
 	
 	@FindBy(id="Password")
 	WebElement password;
+
+	@FindBy(xpath = "//button[@class='button-1 login-button']")
+	WebElement LoginBtn;
 	
-	@FindBy(className="button-1 login-button")
-	WebElement loginbutton;
 	
+	@FindBy(linkText = "Logout")
+	WebElement logout;
 	
-	public void enterEmail(String emailAddress)
+	public void enterEmail(String emailAdd)
 	{
-		email.sendKeys(emailAddress);
+		email.clear();
+		email.sendKeys(emailAdd);
 	}
 	
 	public void enterPassword(String pwd)
 	{
+		password.clear();
 		password.sendKeys(pwd);
 	}
 	
-	public void clickLoginBtn()
+	public void clickOnLoginButton()
 	{
-		loginbutton.click();
+		LoginBtn.click();
 	}
 	
+	public void clickOnLogOutButton()
+	{
+		logout.click();
+	}
 	
 	
 	
