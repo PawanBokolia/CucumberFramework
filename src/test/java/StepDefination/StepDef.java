@@ -1,4 +1,5 @@
 package StepDefination;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,11 +12,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class StepDef {
-	public WebDriver driver;
-	public LoginPage loginpg;
-	public AddNewCustomerPage addNewCusPg;
+/*Child Class */
 
+public class StepDef extends BaseClass{
+
+	
+	
+	
 	@Given("User Launch Chrome browser")
 	public void user_launch_chrome_browser() 
 	{
@@ -30,6 +33,7 @@ public class StepDef {
 	{
 		driver.get(URL);
 		driver.manage().window().maximize();
+		
 	}
 
 	@When("User enters Email as {string} and Password as {string}")
@@ -133,7 +137,7 @@ public class StepDef {
 	@When("user enter customer info")
 	public void user_enter_customer_info()
 	{
-		addNewCusPg.enterEmail("test1@gmail.com");
+		addNewCusPg.enterEmail(generateEmailID()+"@gmail.com");
 		addNewCusPg.enterPassword("test1");
 		addNewCusPg.enterFirstName("Pawan");
 		addNewCusPg.enterLastName("Bokolia");

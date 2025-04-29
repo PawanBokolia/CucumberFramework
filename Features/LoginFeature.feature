@@ -1,5 +1,6 @@
 Feature: Login test
 
+@sanity
 Scenario: successful login with valid credentials
 Given User Launch Chrome browser 
 	When User opens URL "http://admin-demo.nopcommerce.com/login" 
@@ -11,7 +12,7 @@ Given User Launch Chrome browser
 	And close browser 
 
 
-
+@regression 
 Scenario Outline: successful login withvalid credentials DDT
 
 Given User Launch Chrome browser 
