@@ -1,12 +1,14 @@
 package StepDefination;
-import java.time.Duration;
-
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import PageObject.AddNewCustomerPage;
 import PageObject.LoginPage;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,14 +18,26 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StepDef extends BaseClass{
 
+	@Before(order=1)   //Hook with order
+	public void setUp()
+	{
+		System.out.println("setup method executed");
+		 WebDriverManager.chromedriver().setup();
+		  driver = new ChromeDriver();
+	}
 	
-	
+	@Before("@sanity")					//Hook with tag
+	public void setUp2()
+	{
+		System.out.println("setup method executed");
+		 WebDriverManager.chromedriver().setup();
+		  driver = new ChromeDriver();
+	}
 	
 	@Given("User Launch Chrome browser")
 	public void user_launch_chrome_browser() 
 	{
-	    WebDriverManager.chromedriver().setup();
-	    driver = new ChromeDriver();
+	   
 	    loginpg= new LoginPage(driver);
 	    addNewCusPg = new AddNewCustomerPage(driver);
 	}
@@ -168,8 +182,30 @@ public class StepDef extends BaseClass{
 	}
 	
 	
+	@After
+	public void tearDown(Scenario sc)
+	{
+		System.out.println("Tear down executed");
+		if(sc.isFailed()==true)
+		{
+			String path = ".//ScreenShot/";
+		}
+		
+		driver.quit();
+	}
 	
+/*	@BeforeStep 
+	public void beforeStep()
+	{
+		System.out.println("before step");
+	}
 	
+	@AfterStep
+	public void afterSteps()
+	{
+		System.out.println("After steps");
+	}
+*/	
 	
 	
 	

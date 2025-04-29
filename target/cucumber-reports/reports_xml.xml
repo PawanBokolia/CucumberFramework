@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="5.05" tests="2" skipped="0" failures="2" errors="0">
-<testcase classname="customer" name="Search Customer by Name" time="0.035">
+<testsuite name="Cucumber" time="6.855" tests="2" skipped="0" failures="2" errors="0" timestamp="2025-04-29T12:47:43.969445600Z">
+<testcase classname="customer" name="Search Customer by Name" time="2.907">
 <failure/>
 <system-out><![CDATA[
 Given user launch chrome browser............................................undefined
@@ -17,14 +17,14 @@ Then User should found Name in the Search table.............................skip
 And close browser...........................................................skipped
 ]]></system-out>
 </testcase>
-<testcase classname="Login test" name="successful login with valid credentials" time="4.741">
+<testcase classname="Login test" name="successful login with valid credentials" time="3.672">
 <failure type="java.lang.AssertionError" message="expected [true] but found [false]">
 <![CDATA[java.lang.AssertionError: expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1590)
 	at org.testng.Assert.assertTrue(Assert.java:57)
 	at org.testng.Assert.assertTrue(Assert.java:67)
-	at StepDefination.StepDef.page_title_should_be1(StepDef.java:63)
+	at StepDefination.StepDef.page_title_should_be1(StepDef.java:68)
 	at ✽.Page Title should be "Dashboard / nopCommerce administration"(file:///D:/Workspace/20%20march%202023/CucumberFramework/./Features/LoginFeature.feature:9)
 ]]>
 </failure>
