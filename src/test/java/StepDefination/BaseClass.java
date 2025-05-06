@@ -1,0 +1,29 @@
+package StepDefination;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+
+import PageObject.AddNewCustomerPage;
+import PageObject.LoginPage;
+import Utilities.ReadConfig;
+
+public class BaseClass {
+	
+	public WebDriver driver;
+	public LoginPage loginpg;
+	public AddNewCustomerPage addNewCusPg;
+	public static Logger log;
+	public ReadConfig readConfig;
+	
+	
+	public String generateEmailID()
+	{
+		return (RandomStringUtils.randomAlphabetic(5));
+	}
+	
+	
+	
+	
+	
+}
