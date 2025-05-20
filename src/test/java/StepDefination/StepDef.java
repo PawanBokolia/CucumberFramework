@@ -1,4 +1,4 @@
-package StepDefination;
+	package StepDefination;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +22,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StepDef extends BaseClass{
 
-	@Before(order=1)   //Hook with order
+	@Before(order=1)   				//Hook with order
 	public void setUp() throws IOException
 	{
 		readConfig = new ReadConfig();
