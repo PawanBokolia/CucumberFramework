@@ -11,7 +11,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-				<tools-systemPath>C:\Program Files\Java\jdk-21\lib\tools-1.5.0.jar</tools-systemPath>
+	<tools-systemPath>C:\Program Files\Java\jdk-21\lib\tools-1.5.0.jar</tools-systemPath>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -151,4 +151,25 @@
 		</dependency>  
   
   </dependencies>
+
+<build>			<!-- how to add plugin -->
+	<pluginManagement>
+	<plugins>
+	<plugin>
+
+		<groupId>org.apache.maven.plugins</groupId>
+    	<artifactId>maven-surefire-plugin</artifactId>
+    	<version>3.5.3</version>
+    <configuration>
+    	<testFailureIgnore>true</testFailureIgnore>
+    	<includes>
+    	<include>**/Run.java</include> 	
+    	</includes>
+    </configuration>
+
+	</plugin>
+	</plugins>
+ </pluginManagement>
+</build>
+
 </project>

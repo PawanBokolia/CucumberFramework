@@ -59,7 +59,7 @@ public class StepDef extends BaseClass{
 	
 	}
 
-	@Before("@sanity")					//Hook with tag
+//	@Before("@sanity")					//Hook with tag
 	public void setUp2()
 	{
 		System.out.println("setup method executed");
@@ -74,6 +74,7 @@ public class StepDef extends BaseClass{
 		loginpg= new LoginPage(driver);
 		addNewCusPg = new AddNewCustomerPage(driver);
 	}
+	
 
 	@When("User opens URL {string}")
 	public void user_open_url(String URL) 

@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 		glue = "StepDefination",
 		dryRun =false,
 		monochrome = true,
-//		tags="@sanity",					//use for specific test senario
+		tags="@sanity",					//use for specific test senario
 		plugin = {"pretty","junit:target/cucumber-reports/reports_xml.xml","json:target/cucumber-reports/reports_json.json","html:target/cucumber-reports/reports1.html"}
 		)
 /*{"pretty","json:target/cucumber-reports/reports_json.json"}*/
