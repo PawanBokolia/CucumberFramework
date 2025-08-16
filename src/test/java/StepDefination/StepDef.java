@@ -1,13 +1,16 @@
 package StepDefination;
+import java.io.IOException;
+
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import PageObject.AddNewCustomerPage;
 import PageObject.LoginPage;
+import Utilities.ReadConfig;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,27 +22,51 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class StepDef extends BaseClass{
 
 	@Before(order=1)   //Hook with order
-	public void setUp()
+	public void setUp() throws IOException
 	{
+		readConfig= new ReadConfig();
+
 		System.out.println("setup method executed");
-		 WebDriverManager.chromedriver().setup();
-		  driver = new ChromeDriver();
+		String browser = readConfig.getBrowser();
+
+		switch(browser.toLowerCase())
+		{
+		case "chrome":
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			break;
+
+		case "msedge":
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+			break;
+
+		case "firefox":
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+			break;
+		default:
+			driver = null;
+			break;
+
+		}
+
 	}
-	
+
 	@Before("@sanity")					//Hook with tag
 	public void setUp2()
 	{
 		System.out.println("setup method executed");
-		 WebDriverManager.chromedriver().setup();
-		  driver = new ChromeDriver();
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
 	}
-	
+
 	@Given("User Launch Chrome browser")
 	public void user_launch_chrome_browser() 
 	{
-	   
-	    loginpg= new LoginPage(driver);
-	    addNewCusPg = new AddNewCustomerPage(driver);
+
+		loginpg= new LoginPage(driver);
+		addNewCusPg = new AddNewCustomerPage(driver);
 	}
 
 	@When("User opens URL {string}")
@@ -47,7 +74,7 @@ public class StepDef extends BaseClass{
 	{
 		driver.get(URL);
 		driver.manage().window().maximize();
-		
+
 	}
 
 	@When("User enters Email as {string} and Password as {string}")
@@ -71,12 +98,12 @@ public class StepDef extends BaseClass{
 		{
 			Assert.assertTrue(false);
 		}
-	
+
 		else
 		{
 			Assert.assertTrue(false);
 		}
-	
+
 	}
 
 	@When("User click on Log out link")
@@ -85,7 +112,7 @@ public class StepDef extends BaseClass{
 		loginpg.clickOnLogOutButton();
 	}
 
-	
+
 
 	@Then("close browser")
 	public void close_brower() 
@@ -94,18 +121,18 @@ public class StepDef extends BaseClass{
 		driver.quit();
 	}
 
-	
-	
-	
+
+
+
 	/////////////////////////////////   Add new customer ///////////////////////////////////////////////
-	
+
 
 	@Then("user can view Dashboard")
 	public void user_can_view_dashboard() 
 	{
 		String actualTitle = addNewCusPg.getPageTitle();
 		String expectedTitle = "Dashboard / nopCommerce administration";
-		
+
 		if(actualTitle.equals(expectedTitle))
 		{
 			Assert.assertTrue(true);
@@ -115,13 +142,13 @@ public class StepDef extends BaseClass{
 		{
 			Assert.assertTrue(false);
 		}
-	
+
 	}
 
 	@When("user click on customers menu")
 	public void user_click_on_customers_menu() 
 	{
-	  addNewCusPg.clickOnCustomersMenu();
+		addNewCusPg.clickOnCustomersMenu();
 	}
 
 	@When("click on add new customer")
@@ -133,10 +160,10 @@ public class StepDef extends BaseClass{
 	@Then("user can view add new customer page")
 	public void user_can_view_add_new_customer_page()
 	{
-	    String actualTitle = addNewCusPg.getPageTitle();
-	    String expectedTitle = "Add new ";
+		String actualTitle = addNewCusPg.getPageTitle();
+		String expectedTitle = "Add new ";
 
-	    if(actualTitle.equals(expectedTitle))
+		if(actualTitle.equals(expectedTitle))
 		{
 			Assert.assertTrue(true);
 		}
@@ -145,7 +172,7 @@ public class StepDef extends BaseClass{
 		{
 			Assert.assertTrue(false);
 		}
-	    
+
 	}
 
 	@When("user enter customer info")
@@ -158,30 +185,30 @@ public class StepDef extends BaseClass{
 		addNewCusPg.enterGender("Male");
 		addNewCusPg.enterDob("7/6/1995");
 		addNewCusPg.enterCompanyName("codeStudio");
-		
-	
+
+
 	}
 
 	@When("click on the save button")
 	public void click_on_the_save_button()
 	{
-		
-	   
+
+
 	}
 
 	@Then("user can view confirmation message {string}")
 	public void user_can_view_confirmation_message(String string) 
 	{
-	    
+
 	}
 
 	@Then("clocse browser")
 	public void clocse_browser() {
-	   
-		
+
+
 	}
-	
-	
+
+
 	@After
 	public void tearDown(Scenario sc)
 	{
@@ -190,23 +217,23 @@ public class StepDef extends BaseClass{
 		{
 			String path = ".//ScreenShot/";
 		}
-		
+
 		driver.quit();
 	}
-	
-/*	@BeforeStep 
+
+	/*	@BeforeStep 
 	public void beforeStep()
 	{
 		System.out.println("before step");
 	}
-	
+
 	@AfterStep
 	public void afterSteps()
 	{
 		System.out.println("After steps");
 	}
-*/	
-	
-	
-	
+	 */	
+
+
+
 }

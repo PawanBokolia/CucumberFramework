@@ -9,11 +9,11 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 //		features=".//Features/LoginFeature.feature",  
 //		features=".//Features/", 						//This is to run multiple feature files
-		features={".//Features/LoginFeature.feature",".//Features/Customer.feature"},    //Run two or more feature files use {}
+		features={".//Features/LoginFeature.feature"},    //Run two or more feature files use {}
 		glue = "StepDefination",
 		dryRun =false,
 		monochrome = true,
-		tags="@sanity",					//use for specific test senario
+//		tags="@sanity",					//use for specific test senario
 		plugin = {"pretty","junit:target/cucumber-reports/reports_xml.xml","json:target/cucumber-reports/reports_json.json","html:target/cucumber-reports/reports1.html"}
 		)
 /*{"pretty","json:target/cucumber-reports/reports_json.json"}*/

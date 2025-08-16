@@ -19,7 +19,7 @@ Scenario: Add New Customer
 	And close browser  
 
 	
-	Scenario: Search Customer by Email
+Scenario: Search Customer by Email
 
 	When user click on customer menu 
 	And click on customer Menu Item
@@ -28,8 +28,8 @@ Scenario: Add New Customer
 	Then User should found Email in the search table 
 	And close browser 
 	
-	@regression
-	Scenario: Search Customer by Email
+@regression
+Scenario: Search Customer by Email
 	
 	When User click on customers Menu 
 	And click on customers Menu Item 
@@ -38,8 +38,8 @@ Scenario: Add New Customer
 	Then User should found Email in the Search table
 	And close browser 
 	
-	@sanity
-	Scenario: Search Customer by Name
+@sanity
+Scenario: Search Customer by Name
 	
 	When User click on customers Menu 
 	And click on customers Menu Item 
