@@ -11,8 +11,8 @@ import io.cucumber.junit.CucumberOptions;
 //		features=".//Features/", 						//This is to run multiple feature files
 		features={".//Features/LoginFeature.feature"},    //Run two or more feature files use {}
 		glue = "StepDefination",
-		dryRun =false,
-		monochrome = true,
+		dryRun =true,
+		monochrome = true,   			// Makes console output more readable
 //		tags="@sanity",					//use for specific test senario
 		plugin = {"pretty","junit:target/cucumber-reports/reports_xml.xml","json:target/cucumber-reports/reports_json.json","html:target/cucumber-reports/reports1.html"}
 		)
